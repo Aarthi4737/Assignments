@@ -1,4 +1,4 @@
-//Assignment 1 - Date 09/03/2026
+//Assignment 1 - Date 09/03/2026 - Data Types
 
 //  1. Temperature of a city in degrees Celsius: 25.5
 let cityTemperature:number = 25.5;
@@ -49,7 +49,7 @@ let currentDate = new Date();
 console.log("Current Year is:", currentDate.getFullYear() - 3,"\n"); 
 
 // 11. Number of followers on a social media platform: 1,000,000
-let followerCount:number = 1000000;
+let followerCount:string = '1,000,000';
 console.log(followerCount,"\n");
 
 // 12. Rating of a movie: 7.5
@@ -90,3 +90,11 @@ console.log(birthPlace, "\n");
 //20. Distance between two cities: 200.5
 let distanceCities:number = 200.5;
 console.log(distanceCities, "\n")
+
+/*
+Commands to push to GIT
+
+1. git add .
+2. git commit - m "File Name"
+3. git push origin master
+*/
