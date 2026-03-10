@@ -33,21 +33,21 @@ function evaluvateLoanApplication(customerName:string ,creditScore:number, incom
                 }
                 else
                 {
-                    console.log(`Loan Application is Denied for for ${customerName}, as DTI ratio is 40% or greater \n`);
+                    console.log(`Loan Application is Denied for ${customerName}, as DTI ratio is 40% or greater \n`);
                 }
             }
             else
             {
-                console.log(`Loan Application is Denied for for ${customerName}, as User is Un-employed \n`);
+                console.log(`Loan Application is Denied for ${customerName}, as User is Un-employed \n`);
             }
         }
         else
         {
-            console.log(`Loan Application is Denied for for ${customerName}, as Income is less than the baseline set \n`);
+            console.log(`Loan Application is Denied for ${customerName}, as Income is less than the baseline set \n`);
         }
     }
     else if (creditScore < 650)
     {
-        console.log(`Loan Application is Denied for for ${customerName}, as Credit Score of the Loan Applicant is ${creditScore} \n`);
+        console.log(`Loan Application is Denied for ${customerName}, as Credit Score of the Loan Applicant is ${creditScore} \n`);
     }
 }
