@@ -1,4 +1,4 @@
-//Assignment 3 - Date 11/03/2026 - Conditional Statements & Loops)
+//Assignment 4 - Date 11/03/2026 - Conditional Statements & Loops)
 
 let bankTransactions:Map<number,number> = new Map;
 bankTransactions.set(1,50000);
