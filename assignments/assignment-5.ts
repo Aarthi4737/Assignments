@@ -34,7 +34,7 @@ function calculateHike(empName:string, baseSalary:number, yearsOfExp:number, yea
                 rewardPerk =  5000;
             }
         }
-      else if (yearEndRating < 3)
+    else if (yearEndRating < 3)
         {
             variablePay = 3;
             bonusAmount = 300;
