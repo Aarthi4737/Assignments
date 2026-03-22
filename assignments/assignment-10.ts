@@ -1,3 +1,5 @@
+//Calculate Profit
+
 const inputArray: Map<string,number[]> = new Map();
 inputArray.set("inputDatas1",[7,1,5,3,6,4]);
 inputArray.set("inputDatas2",[7,6,4,3,1]);
