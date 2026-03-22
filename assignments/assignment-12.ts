@@ -2,16 +2,18 @@ let pow:number=1;
 
 function calcPower(x:number, n:number):number {
 if(n>0)
-          {  for(let i:number = 1; i<=n; i++)
-    {
-     pow=pow*x;
+    {  
+        for(let i:number = 1; i<=n; i++)
+            {
+                pow=pow*x;
+            }
     }
-}
-else if(n<0)
+else if(n < 0)
 {
-    for(let i:number=0; i>n; i--)
-        pow=pow*x;
-pow=1/pow;
+    for(let i:number=0; i>n; i--){
+    pow=pow*x;
+    }
+    pow=1/pow;
 }
 
 return pow;
