@@ -1,17 +1,22 @@
 let pow:number=1;
-let temp:number;
-let counNum:number = 0;
 
 function calcPower(x:number, n:number):number {
-
-    for(let i:number = n; n > 1; n--)
+if(n>0)
+          {  for(let i:number = 1; i<=n; i++)
     {
-        temp = x * x * pow;
-        pow =  temp/2;
+     pow=pow*x;
     }
-    return pow;
+}
+else if(n<0)
+{
+    for(let i:number=0; i>n; i--)
+        pow=pow*x;
+pow=1/pow;
+}
+
+return pow;
 }
 
 console.log(calcPower(2, 10));
 console.log(calcPower(2.10000, 3));
-console.log(calcPower(2.00000, -2));
+console.log(calcPower(2.000000, -2));
