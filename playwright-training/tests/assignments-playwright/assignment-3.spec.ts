@@ -21,18 +21,29 @@ page.on('dialog', async dialog => {
 
         //Click on the OK button in the alert
         dialog.accept();
+})
 
-        //Click on the cancel button in the alert. 
+await alertButton.click();
+await informationAlert.click();
+page.on('dialog', async dialog => {
+
+    //Copy the message from the alert. 
+        console.log(dialog.message())
+
+       //Click on the cancel button in the alert. 
         dialog.dismiss();
+})
+await confirmationAlert.click();
+
+page.on('dialog', async dialog => {
+
+    //Copy the message from the alert. 
+        console.log(dialog.message())
 
         //Enter text within the alert, and then click on "Accept" or "Dismiss." 
         dialog.accept("Hi Checking the functionality!");
 
 })
-
-await alertButton.click();
-await informationAlert.click();
-await confirmationAlert.click();
 await promptAlert.click();
 
 });

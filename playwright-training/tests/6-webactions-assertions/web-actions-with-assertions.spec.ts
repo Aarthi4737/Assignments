@@ -238,8 +238,4 @@ const frame = page.frameLocator('//iframe');
 const frameElement = frame.locator("#frame-element");
 frameElement.click();
 
-
-
-
-
 });
