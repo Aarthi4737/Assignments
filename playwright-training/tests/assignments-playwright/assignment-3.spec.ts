@@ -10,40 +10,54 @@ console.log("Application launched");
 
 //2. Locate Alert buttons to trigger the alerts
 const alertButton = page.locator('button#alertButton');
-const informationAlert = page.locator('button#timerAlertButton');
+//const informationAlert = page.locator('button#timerAlertButton');
 const confirmationAlert = page.locator('button#confirmButton');
 const promptAlert = page.locator('button#promtButton');
 
-page.on('dialog', async dialog => {
+page.once('dialog', async dialog => {
 
     //Copy the message from the alert. 
-        console.log(dialog.message())
+    console.log("Information Alert message"+dialog.message());
 
-        //Click on the OK button in the alert
-        dialog.accept();
+    //Click on the OK button in the alert
+    await dialog.accept();
 })
 
+//Trigger the information alert
 await alertButton.click();
-await informationAlert.click();
-page.on('dialog', async dialog => {
+
+//Wait for 2 sec for the Playwright to complete the action
+await page.waitForTimeout(2000);
+
+//await informationAlert.click();
+page.once('dialog', async dialog => {
 
     //Copy the message from the alert. 
-        console.log(dialog.message())
+    console.log(dialog.message())
 
-       //Click on the cancel button in the alert. 
-        dialog.dismiss();
+    //Click on the cancel button in the alert. 
+    await dialog.dismiss();
 })
+//Trigger the Confirmation alert
 await confirmationAlert.click();
 
-page.on('dialog', async dialog => {
+//Wait for 2 sec for the Playwright to complete the action
+await page.waitForTimeout(2000);
+
+page.once('dialog', async dialog => {
 
     //Copy the message from the alert. 
-        console.log(dialog.message())
+    console.log(dialog.message());
 
-        //Enter text within the alert, and then click on "Accept" or "Dismiss." 
-        dialog.accept("Hi Checking the functionality!");
+    //Enter text within the alert, and then click on "Accept" or "Dismiss." 
+    await dialog.accept("Hi Checking the functionality!");
 
 })
+
+//Trigger the Prompt alert
 await promptAlert.click();
+
+//Wait for 2 sec for the Playwright to complete the action
+await page.waitForTimeout(2000);
 
 });

@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test" :"playwright test tests/assignments-playwright/assignment-2.spec.ts --headed",
+    "report" : "playwright show-report",
+    "debug" : "playwright test tests/assignments-playwright/assignment-2.spec.ts --debug"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
