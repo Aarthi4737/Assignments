@@ -1,0 +1,23 @@
+{
+    "loginTitle" : "span.form-title",
+    "businessEmailLabel": "//label[text()='Business email']",
+    "businessEmailTextBox" : "input[aria-label='Business email']",
+    "passwordLabel" : "//label[text()='Password']",
+    "passwordTextBox" : "input[aria-label='Password']",
+    "forgotPasswordLink" : "a.forgot-password-link",
+    "eyeIcon" : "path#Path_11238",
+    "informationIcon" : "mat-icon[aria-label='Tooltip.Mode.Error Password']",
+    "loginButton" : "//span[text()=' LOG IN ']",
+    "socialLabel" : "label.social-buttons-label",
+    "linkedinIcon" : "img.icon-LinkedIn",
+    "googleIcon" : "img.icon-google",
+    "linkedinLabel" : "//span[text() = 'LinkedIn']",
+    "googleLabel" : "//span[text() = 'Google']",
+    "noAccountLabel" : "span.login-question",
+    "singupButton" : "//span[text()=' SIGN UP ']",
+    "footerDivsion" : "div.footer",
+    "footerCookieBotWidgetLogo" : "button[aria-label='Open CMP widget']",
+    "footerOnePlatformLabel" : "//span[text()='One Platform']",
+    "footerFreedomLabel" : "//span[text()='Freedom']",
+    "footerGeniuneCareLabel": "//span[text()='Genuine Care']"
+}

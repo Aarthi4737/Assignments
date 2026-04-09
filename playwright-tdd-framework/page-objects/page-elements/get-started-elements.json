@@ -1,0 +1,13 @@
+{
+    "getStartedPopUp" : "div.app-get-started",
+    "readyToBuildLabel" : "//label[text()=' Ready to build an app? ']",
+    "unlockSentenceLabel" : "crt-label.sub-header-caption",
+    "businessProcessImage" : "img[alt='Records & Business processes']",
+    "businessProcessLabel" : "//div[text()=' Records & Business processes ']",
+    "businessProcessTextBelowLabel" : "//div[contains(text(),'Manage')]",
+    "aiGeneratedImage" : "img[alt='AI Generated']",
+    "aiGeneratedLabel" : "//div[text()=' AI Generated ']",
+    "aiGeneratedTextBelowLablel" : "//div[contains(text(),'cutting')]",
+    "skipButton" : "//span[text()=' Skip ']",
+    "selectButton" : "//span[text()=' Select ']"
+}   
