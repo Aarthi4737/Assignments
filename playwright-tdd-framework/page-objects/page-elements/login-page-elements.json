@@ -19,5 +19,7 @@
     "footerCookieBotWidgetLogo" : "button[aria-label='Open CMP widget']",
     "footerOnePlatformLabel" : "//span[text()='One Platform']",
     "footerFreedomLabel" : "//span[text()='Freedom']",
-    "footerGeniuneCareLabel": "//span[text()='Genuine Care']"
+    "footerGeniuneCareLabel": "//span[text()='Genuine Care']",
+    "forgotPasswordConfirmationMsg":"//span[text()='Almost done!']",
+    "loginErrorMessage":"//div[contains(text(),'Invalid email or password')]"
 }

@@ -5,11 +5,12 @@
     "ellipseIcon" : "g#Ellipse_2056",
     "arrowIcon" : "mat-icon[svgicon='arrow_drop_down']",
     "toolBarLogo" : "mat-icon[svgicon='toolbar-logo']",
-    "profileIcon" : "//span[text()='AA']", 
+    "profileIcon" : "span[class*='contact-photo']", 
     "newApplicationButton" : "//span[text()='New application']",
     "searchBox" : "input[class*='search']",
     "modifiedDateSortFilter" : "span[class*='trigger-caption']",
     "octopusClip" : "g[clip-path='url(#__lottie_element_2)']",
     "noAppsText" :"//div[text()='No apps in this section so far']",
-    "textBelowNoApps" : "//div[contains(text(),'Marketplace ')]"
+    "textBelowNoApps" : "//div[contains(text(),'Marketplace ')]",
+    "logoutLink":"//span[text()='Log out']"
 }

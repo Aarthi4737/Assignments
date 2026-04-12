@@ -8,7 +8,10 @@
     },
     "db":{
         "host":"localhost",
-        "port":330
+        "port":330,
+        "username": "root",
+        "password": "password",
+        "database": "my_database"
     },
     "api":{
         "endpoint":"https://api.example.com",
