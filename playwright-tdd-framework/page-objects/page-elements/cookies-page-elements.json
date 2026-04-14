@@ -16,5 +16,7 @@
     "allowAllButton" : "button#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll",
     "allowSelectionButton" : "button#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection",
     "denyButton" : "button#CybotCookiebotDialogBodyButtonDecline",
-    "cookiePopupExpandedView":"a#CybotCookiebotDialogNavDetails"
+    "consentTabExpandedView" : "a#CybotCookiebotDialogNavDeclaration",
+    "detailsTabExpandedView":"a#CybotCookiebotDialogNavDetails",
+    "aboutTabExpandedView" : "a#CybotCookiebotDialogNavAbout"
 }

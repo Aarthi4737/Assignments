@@ -1,54 +1,62 @@
-import type { Page } from "@playwright/test";
-import cookiesPage from '../page-elements/cookies-page-elements.json' with { type: 'json' };
+import { Page } from "@playwright/test";
 import { WebCommons } from "../../commons/ui/web-commons.ts";
+import cookiesPage from '../page-elements/cookies-page-elements.json' with {type:'json'};
 
-//This class will contain all the common methods or step definitions related to the login page of the application. 
-export class CookiesPageSteps {
+export class CookiesPageSteps{
 
-    page: Page;
-    web: WebCommons;
+    page : Page;
+    web : WebCommons;
 
-    constructor(page: Page) {
+    constructor(page : Page){
         this.page = page;
         this.web = new WebCommons(this.page);
     }
 
-    //Method to verify cookie space is displayed 
-    async verifyCookiesPageIsDisplayed(){
-        await this.web.isElementVisible(cookiesPage.cookiesHeader);
+
+    //Method to verify whether the Cookie Dialog box is displayed
+    async verifyCookieDialogIsVisible(){
+        await this.web.isElementVisible(cookiesPage.cookieDialogCheck);
     }
 
     //Method to verify the content of the cookies page
-    async verifyCookiesPopupContent(expectedContent:string){
+    async verifyCookiePopUpContent(expectedContent:string){
         await this.web.isElementVisible(cookiesPage.cookiesContent);
         const actualContent = await this.web.getElementText(cookiesPage.cookiesContent);
         await this.web.compareText(actualContent,expectedContent);
     }
 
-    //Method to verify the logos displayed on the cookie's pop-up 
-    async verifyCookiesPageLogos(){
+    //Method to verify if the logos are displayed in the cookies page
+    async verifyLogosDisplayed(){
         await this.web.isElementVisible(cookiesPage.creatioImage);
         await this.web.isElementVisible(cookiesPage.cookieBotLink);
     }
 
+    //Method to verify all the Toggle Labels are displayed in the cookies popup. 
+    async verifyAllToggleLables(){
+        await this.web.isElementVisible(cookiesPage.necessaryToggleLabel);
+        await this.web.isElementVisible(cookiesPage.preferencesToggleLabel);
+        await this.web.isElementVisible(cookiesPage.marketingToggleLabel);
+        await this.web.isElementVisible(cookiesPage.statisticsToggleLabel);
+    }
+
+    //Method to verify all the Toggle buttons displayed in the cookies popup. 
+    async verifyAllToggleButtons(){
+        await this.web.isElementVisible(cookiesPage.necessaryToggle);
+        await this.web.isElementVisible(cookiesPage.preferencesToggle);
+        await this.web.isElementVisible(cookiesPage.marketingToggle);
+        await this.web.isElementVisible(cookiesPage.statisticsToggle);
+    }
+
     //Method to verify all the selection buttons displayed in the cookies popup. 
-    async verifyCookiesPageSelectionButtons(){
+    async verifyAllSelectionButtons(){
         await this.web.isElementVisible(cookiesPage.allowAllButton);
         await this.web.isElementVisible(cookiesPage.allowSelectionButton);
         await this.web.isElementVisible(cookiesPage.denyButton);
     }
 
-    //Method to verify all the switch buttons displayed in the cookies popup. 
-    async verifyCookiesPageSwitchButtons(){
-        await this.web.isElementVisible(cookiesPage.necessaryToggle);
-        await this.web.isElementVisible(cookiesPage.preferencesToggle);
-        await this.web.isElementVisible(cookiesPage.statisticsToggle);
-        await this.web.isElementVisible(cookiesPage.marketingToggle);
-    }
-
-    //Method to verify show details link is displayed in the cookies popup. 
-    async verifyShowDetailsLink(){
-        await this.web.isElementVisible(cookiesPage.showDetailsLink);
+    //Method to check whether user is able to click on Cookie Bot Logo
+    async verifyClickOnCookieBotLink(){
+        await this.web.clickElement(cookiesPage.cookieBotLink);
     }
 
     //Method to click on the show details link in the cookies pop-up. 
@@ -56,9 +64,18 @@ export class CookiesPageSteps {
         await this.web.clickElement(cookiesPage.showDetailsLink);
     }
 
-    //Method to verify the expanded view of Cookies Popup. 
-    async verifyExpandedViewOfCookiesPopup(){
-        await this.web.isElementVisible(cookiesPage.cookiePopupExpandedView);
+    //Method to check whether the Tabs of expanded view of Cookie pop up is displayed
+    async verifyTabsOfExpandedViewCookiePopUp(){
+        await this.web.isElementVisible(cookiesPage.consentTabExpandedView);
+        await this.web.isElementVisible(cookiesPage.detailsTabExpandedView);
+        await this.web.isElementVisible(cookiesPage.aboutTabExpandedView);
+    }
+
+    //Method to check whether the Expanded View tabs are clickable
+    async verifyTabClick(){
+        await this.web.clickElement(cookiesPage.consentTabExpandedView);
+        await this.web.clickElement(cookiesPage.detailsTabExpandedView);
+        await this.web.clickElement(cookiesPage.aboutTabExpandedView);
     }
 
     //Method two: click on the specific selection button. 
@@ -77,10 +94,9 @@ export class CookiesPageSteps {
                 throw new Error(`Invalid button name: ${buttonName}`);
         }
     } 
-    
-    //Method to verify Cookies pop-up is closed. 
-    async verifyCookiesPopupIsClosed(){
-        await this.web.isElementDisappeared(cookiesPage.cookiesHeader);
+
+    //Method to check whether the cookies pop up is closed
+    async verifyCookiePopUpIsClosed(){
+        await this.web.isElementDisappeared(cookiesPage.cookieDialogCheck);
     }
-    
 }

@@ -120,9 +120,9 @@ export class WebCommons {
     }
 
     //Common method to check if an element is visible
-    async isElementVisible(locator: string): Promise<void> {
+    async isElementVisible(locator: string): Promise<boolean> {
         const element = await this.element(locator);
-        expect(element).toBeVisible();
+        return await element.isVisible();
     }
 
     //Common method to check if an element is enabled
