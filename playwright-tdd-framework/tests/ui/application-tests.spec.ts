@@ -20,23 +20,23 @@ test.describe('UI Application Tests', () => {
 
     //Test Case 1: Verify Cookies Page is Displayed
     test('Verify Cookies Popup', async () => {
-        await loginPage.launchtheApplication();
-        await cookiesPage.verifyCookiesPageIsDisplayed();
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsVisible();
     });
 
     //Test Case 2: Verify cookies pop-up content 
     test('Verify Cookies Popup Content', async () => {
         testData = data["Verify Cookies Popup Content"];
-        await loginPage.launchtheApplication();
-        await cookiesPage.verifyCookiesPageIsDisplayed();
-        await cookiesPage.verifyCookiesPopupContent(testData.content);
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsVisible();
+        await cookiesPage.verifyCookiePopUpContent(testData.content);
     });
 
     //Test Case 3: Verify Logos displayed in the cookies page. 
     test('Verify Cookies Page Logos', async () => {
-        await loginPage.launchtheApplication();
-        await cookiesPage.verifyCookiesPageIsDisplayed();
-        await cookiesPage.verifyCookiesPageLogos();
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsVisible();
+        await cookiesPage.verifyLogosDisplayed();
     });
 
 
