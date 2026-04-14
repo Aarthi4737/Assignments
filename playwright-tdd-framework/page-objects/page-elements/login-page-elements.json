@@ -16,10 +16,17 @@
     "noAccountLabel" : "span.login-question",
     "singupButton" : "//span[text()=' SIGN UP ']",
     "footerDivsion" : "div.footer",
-    "footerCookieBotWidgetLogo" : "button[aria-label='Open CMP widget']",
+    "footerCookieBotLink" : "button[aria-label='Open CMP widget']",
     "footerOnePlatformLabel" : "//span[text()='One Platform']",
     "footerFreedomLabel" : "//span[text()='Freedom']",
     "footerGeniuneCareLabel": "//span[text()='Genuine Care']",
     "forgotPasswordConfirmationMsg":"//span[text()='Almost done!']",
-    "loginErrorMessage":"//div[contains(text(),'Invalid email or password')]"
+    "loginErrorMessage":"//div[contains(text(),'Invalid email or password')]",
+    "cookieWidget": "div.CookiebotWidget-header",
+    "cookieWidgetClose" :"button.CookiebotWidget-close",
+    "cookieWidgetShowDetails" : "//button[text()='Show details']",
+    "cookieWidgetWithdrawConsent" : "button#CookiebotWidget-btn-withdraw",
+    "cookieWidgetChangeConsent" : "button#CookiebotWidget-btn-change",
+    "cookieWidgetHideDetails" : "//button[text()='Hide details']",
+    "cookieWidgetConsentDetails" : "div.CookiebotWidget-consent-details-box"
 }

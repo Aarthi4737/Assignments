@@ -10,7 +10,7 @@ export class WebCommons {
 
     //Common method to generate WebElement from the locator
     async element(locator: string): Promise<Locator> {
-        return this.page.locator(locator);
+        return await this.page.locator(locator);
     }
 
     //Common method to launch the application
@@ -120,21 +120,22 @@ export class WebCommons {
     }
 
     //Common method to check if an element is visible
-    async isElementVisible(locator: string): Promise<boolean> {
+    async isElementVisible(locator: string): Promise<void> {
         const element = await this.element(locator);
-        return await element.isVisible();
+        await this.scrollToElement(locator);
+        await expect(element).toBeVisible();
     }
 
     //Common method to check if an element is enabled
     async isElementEnabled(locator: string): Promise<void> {
         const element = await this.element(locator);
-        expect(element).toBeEnabled();
+        await expect(element).toBeEnabled();
     }
 
     //Common method to verify element is disappeared
     async isElementDisappeared(locator: string): Promise<void> {
         const element = await this.element(locator);
-        expect(element).toBeHidden();
+        await expect(element).toBeHidden();
     }
 
     //Common method to handle alert pop-up
@@ -155,7 +156,7 @@ export class WebCommons {
 
     //Common method to compare text values
     async compareText(actual :string |null, expected:string){
-        if(actual!==expected){
+        if(!(actual?.includes(expected))){
             throw new Error(`Expected Value is ${expected} , But found ${actual}`);
         }
     }

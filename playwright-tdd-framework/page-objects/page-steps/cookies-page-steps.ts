@@ -14,25 +14,25 @@ export class CookiesPageSteps{
 
 
     //Method to verify whether the Cookie Dialog box is displayed
-    async verifyCookieDialogIsVisible(){
+    async verifyCookieDialogIsDisplayed(): Promise<void>{
         await this.web.isElementVisible(cookiesPage.cookieDialogCheck);
     }
 
     //Method to verify the content of the cookies page
-    async verifyCookiePopUpContent(expectedContent:string){
+    async verifyCookiePopUpContent(expectedContent:string): Promise<void>{
         await this.web.isElementVisible(cookiesPage.cookiesContent);
         const actualContent = await this.web.getElementText(cookiesPage.cookiesContent);
         await this.web.compareText(actualContent,expectedContent);
     }
 
     //Method to verify if the logos are displayed in the cookies page
-    async verifyLogosDisplayed(){
+    async verifyLogosDisplayed(): Promise<void>{
         await this.web.isElementVisible(cookiesPage.creatioImage);
         await this.web.isElementVisible(cookiesPage.cookieBotLink);
     }
 
     //Method to verify all the Toggle Labels are displayed in the cookies popup. 
-    async verifyAllToggleLables(){
+    async verifyAllToggleLables(): Promise<void>{
         await this.web.isElementVisible(cookiesPage.necessaryToggleLabel);
         await this.web.isElementVisible(cookiesPage.preferencesToggleLabel);
         await this.web.isElementVisible(cookiesPage.marketingToggleLabel);
@@ -40,7 +40,7 @@ export class CookiesPageSteps{
     }
 
     //Method to verify all the Toggle buttons displayed in the cookies popup. 
-    async verifyAllToggleButtons(){
+    async verifyAllToggleButtons(): Promise<void>{
         await this.web.isElementVisible(cookiesPage.necessaryToggle);
         await this.web.isElementVisible(cookiesPage.preferencesToggle);
         await this.web.isElementVisible(cookiesPage.marketingToggle);
@@ -48,38 +48,43 @@ export class CookiesPageSteps{
     }
 
     //Method to verify all the selection buttons displayed in the cookies popup. 
-    async verifyAllSelectionButtons(){
+    async verifyAllSelectionButtons(): Promise<void>{
         await this.web.isElementVisible(cookiesPage.allowAllButton);
         await this.web.isElementVisible(cookiesPage.allowSelectionButton);
         await this.web.isElementVisible(cookiesPage.denyButton);
     }
 
     //Method to check whether user is able to click on Cookie Bot Logo
-    async verifyClickOnCookieBotLink(){
+    async verifyClickOnCookieBotLink(): Promise<void>{
         await this.web.clickElement(cookiesPage.cookieBotLink);
     }
 
+    //Method to verify show details link is displayed in the cookies popup. 
+    async verifyShowDetailsLink(): Promise<void>{
+        await this.web.isElementVisible(cookiesPage.showDetailsLink);
+    }
+
     //Method to click on the show details link in the cookies pop-up. 
-    async clickOnShowDetailsLink(){
+    async clickOnShowDetailsLink(): Promise<void>{
         await this.web.clickElement(cookiesPage.showDetailsLink);
     }
 
     //Method to check whether the Tabs of expanded view of Cookie pop up is displayed
-    async verifyTabsOfExpandedViewCookiePopUp(){
+    async verifyTabsOfExpandedViewCookiePopUp(): Promise<void>{
         await this.web.isElementVisible(cookiesPage.consentTabExpandedView);
         await this.web.isElementVisible(cookiesPage.detailsTabExpandedView);
         await this.web.isElementVisible(cookiesPage.aboutTabExpandedView);
     }
 
     //Method to check whether the Expanded View tabs are clickable
-    async verifyTabClick(){
+    async verifyTabClick(): Promise<void>{
         await this.web.clickElement(cookiesPage.consentTabExpandedView);
         await this.web.clickElement(cookiesPage.detailsTabExpandedView);
         await this.web.clickElement(cookiesPage.aboutTabExpandedView);
     }
 
-    //Method two: click on the specific selection button. 
-    async clickOnSelectionButton(buttonName:string){
+    //Method to click on the specific selection button. 
+    async clickOnSelectionButton(buttonName:string): Promise<void>{
         switch(buttonName.toLowerCase()){
             case 'allow all':
                 await this.web.clickElement(cookiesPage.allowAllButton);
@@ -96,7 +101,7 @@ export class CookiesPageSteps{
     } 
 
     //Method to check whether the cookies pop up is closed
-    async verifyCookiePopUpIsClosed(){
+    async verifyCookiePopUpIsClosed(): Promise<void>{
         await this.web.isElementDisappeared(cookiesPage.cookieDialogCheck);
     }
 }

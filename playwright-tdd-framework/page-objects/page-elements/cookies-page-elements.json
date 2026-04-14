@@ -8,7 +8,7 @@
     "necessaryToggle": "input#CybotCookiebotDialogBodyLevelButtonNecessary",
     "preferencesToggleLabel": "label[for='CybotCookiebotDialogBodyLevelButtonPreferences']",
     "preferencesToggle" : "input#CybotCookiebotDialogBodyLevelButtonPreferences",
-    "statisticsToggleLabel": "label[for='CybotCookiebotDialogBodyLevelButtonStatistics'0]",
+    "statisticsToggleLabel": "label[for='CybotCookiebotDialogBodyLevelButtonStatistics']",
     "statisticsToggle" : "input#CybotCookiebotDialogBodyLevelButtonStatistics",
     "marketingToggleLabel": "label[for='CybotCookiebotDialogBodyLevelButtonMarketing']",
     "marketingToggle" : "input#CybotCookiebotDialogBodyLevelButtonMarketing",
