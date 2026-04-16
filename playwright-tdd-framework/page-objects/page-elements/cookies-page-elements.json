@@ -18,5 +18,7 @@
     "denyButton" : "button#CybotCookiebotDialogBodyButtonDecline",
     "consentTabExpandedView" : "a#CybotCookiebotDialogNavDeclaration",
     "detailsTabExpandedView":"a#CybotCookiebotDialogNavDetails",
-    "aboutTabExpandedView" : "a#CybotCookiebotDialogNavAbout"
+    "aboutTabExpandedView" : "a#CybotCookiebotDialogNavAbout",
+    "linkSelector" : "a[target='_blank']",
+    "actualTitle" : "//title[text()='What is behind “Powered by Cookiebot™” - Cookiebot']"
 }

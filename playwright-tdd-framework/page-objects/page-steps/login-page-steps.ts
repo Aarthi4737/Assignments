@@ -1,7 +1,8 @@
-import { Page } from "@playwright/test";
+import { Page, Locator } from "@playwright/test";
 import { WebCommons } from "../../commons/ui/web-commons.ts";
 import loginPage from '../page-elements/login-page-elements.json' with {type:'json'};
 import config from '../../config/config.json' with {type:'json'};
+
 
 export class LoginPageSteps{
 
@@ -18,7 +19,7 @@ export class LoginPageSteps{
     async launchTheApplication(): Promise<void> {
         await this.web.launchApplication(config.app.url, config.app.title);
     }
-
+    
     //Method to Verify login page is displayed. 
     async verifyLoginPageIsDisplayed() : Promise<void> {
         await this.web.isElementVisible(loginPage.loginTitle);
@@ -135,4 +136,6 @@ export class LoginPageSteps{
     async verifyUserIsLoggedOut(): Promise<void> {
         await this.web.isElementVisible(loginPage.loginTitle);
     }
+
+    
 }

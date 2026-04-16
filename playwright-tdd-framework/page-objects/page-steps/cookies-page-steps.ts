@@ -1,14 +1,17 @@
-import { Page } from "@playwright/test";
+import { Page, BrowserContext } from "@playwright/test";
 import { WebCommons } from "../../commons/ui/web-commons.ts";
 import cookiesPage from '../page-elements/cookies-page-elements.json' with {type:'json'};
+import { clickAndWaitForNewTab } from "../../commons/ui/web-commons.ts";
 
 export class CookiesPageSteps{
 
     page : Page;
     web : WebCommons;
+    context: BrowserContext;
 
-    constructor(page : Page){
+    constructor(page : Page, context: BrowserContext){
         this.page = page;
+         this.context = context;
         this.web = new WebCommons(this.page);
     }
 
@@ -103,5 +106,16 @@ export class CookiesPageSteps{
     //Method to check whether the cookies pop up is closed
     async verifyCookiePopUpIsClosed(): Promise<void>{
         await this.web.isElementDisappeared(cookiesPage.cookieDialogCheck);
+    }
+
+    //Method to check whether a new Tab is opened on click of a Link/Button
+    async openLinkInNewTab(expectedTitle:string) : Promise<void> {
+        const actualTitle = await clickAndWaitForNewTab(cookiesPage.linkSelector, this.page, this.context);
+        await this.web.compareText(actualTitle,expectedTitle);
+    }
+
+    //Method to check the title of a web page
+    async verifyNewPageTitle(title:string): Promise<void>{
+        await this.web.checkTitle(title);
     }
 }

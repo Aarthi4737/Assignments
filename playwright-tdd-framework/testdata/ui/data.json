@@ -9,5 +9,8 @@
     "Verify Login with Invalid Credentials":{
         "username":"theeaarthi@gmail.com",
         "password":"vinayak@123"
+    },
+    "Verify new Page title":{
+        "titleText":"What is behind “Powered by Cookiebot™” - Cookiebot"
     }
 }

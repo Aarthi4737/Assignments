@@ -1,4 +1,4 @@
-import {Page, Locator, expect} from '@playwright/test';
+import {Page, Locator, expect,BrowserContext} from '@playwright/test';
 
 export class WebCommons {
 
@@ -21,6 +21,7 @@ export class WebCommons {
         }
     }
 
+   
     //Common method to scroll to an element
     async scrollToElement(locator: string): Promise<void> {
         const element = await this.element(locator);
@@ -167,4 +168,17 @@ export class WebCommons {
         await expect(element).toHaveText(expectedText);
     }
 
+     //Common method to check the title
+    async checkTitle( title: string): Promise<void> {
+        if (title) {
+            await expect(this.page).toHaveTitle(title);
+        }
+    }
 }
+
+export async function clickAndWaitForNewTab(locator: string, page:Page, context:BrowserContext) : Promise<string> {
+        const [newPage] = await Promise.all([context.waitForEvent('page'),page.click(locator)]);
+        await newPage.waitForLoadState();
+        return await newPage.title();
+    }
+

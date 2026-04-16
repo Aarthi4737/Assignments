@@ -11,9 +11,9 @@ let testData: any;
 
 test.describe('UI Application Tests', () => {
 
-    test.beforeEach(async ({page}) => {
+    test.beforeEach(async ({page, context}) => {
         loginPage = new LoginPageSteps(page);
-        cookiesPage = new CookiesPageSteps(page);
+        cookiesPage = new CookiesPageSteps(page, context);
         homePage = new HomePageSteps(page);
     });
 
@@ -80,7 +80,7 @@ test.describe('UI Application Tests', () => {
 
     //Test Case 9: Verify Login Functionality with valid credentials.
     test('Verify Login with Valid Credentials', async ({}, testInfo: TestInfo) => {
-        test.slow();
+        //test.slow();
         testData = data[testInfo.title as keyof typeof data];
         await loginPage.launchTheApplication();
         await cookiesPage.verifyCookieDialogIsDisplayed();
@@ -91,5 +91,13 @@ test.describe('UI Application Tests', () => {
         await loginPage.enterUsernameAndPassword(testData.username, testData.password);
         await loginPage.clickOnLoginButton();
         await homePage.verifyHomePageIsDisplayed();
+    });
+
+    //Test Case 10: Verify whether a new tab is opened on click of CookieBot link in the Cookies Page
+    test('Verify new Page title', async ({ page, context }, testInfo: TestInfo) => {       
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.openLinkInNewTab(testData.titleText);;
     });
 });
