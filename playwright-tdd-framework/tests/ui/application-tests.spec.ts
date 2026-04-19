@@ -68,7 +68,15 @@ test.describe('UI Application Tests', () => {
         await cookiesPage.clickOnShowDetailsLink();
     });
 
-    //Test Case 8: Verify cookies pop-up getting closed after clicking on 'allow all' button
+    //Test Case 8: Verify whether user is able to select the 'Statistics' toggle button
+    test('Verify user is able to select the Statistics toggle button', async() => {
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.clickOnToggleButton('statistics');
+    });
+
+
+    //Test Case 9: Verify cookies pop-up getting closed after clicking on 'allow all' button
     test('Verify Cookies Popup is Closed after Clicking Allow All Button', async() => {
         await loginPage.launchTheApplication();
         await cookiesPage.verifyCookieDialogIsDisplayed();
@@ -78,7 +86,15 @@ test.describe('UI Application Tests', () => {
         await cookiesPage.verifyCookiePopUpIsClosed();
     });
 
-    //Test Case 9: Verify Login Functionality with valid credentials.
+    //Test Case 10: Verify whether a new tab is opened on click of CookieBot link in the Cookies Page
+    test('Verify new Page title', async ({ page, context }, testInfo: TestInfo) => {       
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.openLinkInNewTab(testData.titleText);;
+    });
+
+    //Test Case 11: Verify Login Functionality with valid credentials.
     test('Verify Login with Valid Credentials', async ({}, testInfo: TestInfo) => {
         //test.slow();
         testData = data[testInfo.title as keyof typeof data];
@@ -93,11 +109,115 @@ test.describe('UI Application Tests', () => {
         await homePage.verifyHomePageIsDisplayed();
     });
 
-    //Test Case 10: Verify whether a new tab is opened on click of CookieBot link in the Cookies Page
-    test('Verify new Page title', async ({ page, context }, testInfo: TestInfo) => {       
+    //Test Case 12: Verify Login Functionality with invalid credentials.
+    test('Verify Login with Invalid Credentials', async ({}, testInfo: TestInfo) => {
+        //test.slow();
         testData = data[testInfo.title as keyof typeof data];
         await loginPage.launchTheApplication();
         await cookiesPage.verifyCookieDialogIsDisplayed();
-        await cookiesPage.openLinkInNewTab(testData.titleText);;
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow all");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterUsernameAndPassword(testData.username, testData.password);
+        await loginPage.clickOnLoginButton();
+        await loginPage.verifyLoginErrorMessage();
     });
+
+    //Test Case 13: Verify hover text while provuding invalid email
+    test('Verify Hover text with Invalid email', async ({}, testInfo: TestInfo) => {
+        //test.slow();
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow all");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterUsernameAndPassword(testData.username, testData.password);
+        await loginPage.verifyHoverAction();
+        await loginPage.verifyToolTipInvalidEmail();
+    });
+
+    //Test Case 14: Verify password text by extracting
+    test('Verify password extraction on click of Eye Icon', async ({}, testInfo: TestInfo) => {
+        //test.slow();
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow all");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterUsernameAndPassword(testData.username, testData.password);
+        await loginPage.verifyExtractedTextPassword(testData.password);
+    });
+  
+    //Test Case 15: Verify the hover text on click of Forgot Password without giving mail id
+    test('Verify hover text on click of Forgot Password without giving emailid', async () => {
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow all");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.clickForgotPasswordLink();
+        await loginPage.verifyHoverAction();
+        await loginPage.verifyToolTipNoEmailForgotPassword();
+    });
+
+    //Test Case 16: Verify forgot password confirmation message
+    test('Verify forgot password confirmation message', async ({}, testInfo: TestInfo) => {
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow selection");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterUsername(testData.username);
+        await loginPage.clickForgotPasswordLink();
+        await loginPage.verifyForgotPasswordConfirmationMsg();
+    });
+
+    //Test Case 17: Verify whether LinkedIn page is opened when user clicks on LinkedIn icon
+    test('Verify whether LinkedIn page is opened when user clicks on LinkedIn icon', async ({}, testInfo: TestInfo) => {
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow selection");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.verifyClickLinkedinIcon();
+        await loginPage.verifyNewPageTitle(testData.linkedinTitle);
+    });
+
+    //Test Case 18: Verify whether Google page is opened when user clicks on Google icon
+    test('Verify whether Google page is opened when user clicks on Google icon', async ({}, testInfo: TestInfo) => {
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow selection");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.verifyClickGoogleIcon();
+        await loginPage.verifyNewPageTitle(testData.googleTitle);
+    });
+
+    //Test Case 19: Verify new page displayed when Sign Up button is clicked
+    test('Verify whether new page displayed on click of Sign up button', async () => {
+        test.slow();
+        await loginPage.launchTheApplication();
+        await cookiesPage.verifyCookieDialogIsDisplayed();
+        await cookiesPage.verifyAllSelectionButtons();
+        await cookiesPage.clickOnSelectionButton("allow selection");
+        await cookiesPage.verifyCookiePopUpIsClosed();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.verifyClickSignUp();
+        await loginPage.verifyAdditonalSecurityHeader();
+    });
+
+
 });

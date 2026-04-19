@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator, expect } from "@playwright/test";
 import { WebCommons } from "../../commons/ui/web-commons.ts";
 import loginPage from '../page-elements/login-page-elements.json' with {type:'json'};
 import config from '../../config/config.json' with {type:'json'};
@@ -25,6 +25,11 @@ export class LoginPageSteps{
         await this.web.isElementVisible(loginPage.loginTitle);
     }
 
+    //Method to Verify login page is displayed. 
+    async verifyLinkedInPageIsDisplayed() : Promise<void> {
+        await this.web.isElementVisible(loginPage.loginTitle);
+    }
+
     //Method to verify the Business Email, Password Label elements
     async verifyLabelElements(): Promise<void>{
         await this.web.isElementVisible(loginPage.businessEmailLabel);
@@ -35,6 +40,11 @@ export class LoginPageSteps{
     async verifyTextBoxElements(): Promise<void>{
         await this.web.isElementVisible(loginPage.businessEmailTextBox);
         await this.web.isElementVisible(loginPage.passwordTextBox);
+    }
+
+    //Method to enter the Username 
+    async enterUsername(Username:string):Promise<void>{
+        await this.web.enterText(loginPage.businessEmailTextBox,Username);
     }
    
     //Method to enter the Username and Password
@@ -51,6 +61,34 @@ export class LoginPageSteps{
     //Method to verify whether the Forgot Password Link is displayed
     async verifyForgotPasswordLink(): Promise<void>{
         await this.web.isElementVisible(loginPage.forgotPasswordLink);
+    }
+
+    //Method to hover over a web element
+    async verifyHoverAction(): Promise<void> {
+        await this.web.hoverElement(loginPage.invalidEmailIconToolTip);
+    }
+
+    //Method to check the tool tip displayed when incorrect email is given
+    async verifyToolTipInvalidEmail(): Promise<void>{
+        await this.web.hoverToolTipText(loginPage.toolTipErrorMessage);
+    }
+
+    //Method to check the tool tip displayed when email is not provided and Forgot Password is clicked
+    async verifyToolTipNoEmailForgotPassword(): Promise<void>{
+        await this.web.hoverToolTipText(loginPage.forgotPasswordToolTip);
+    }
+
+    //Method to click on the eye icon 
+    async verifyEyeIconClick(): Promise<void>{
+        await this.web.clickElement(loginPage.viewPasswordIcon);
+    }
+
+    //Method to compare the extracted text with the expected value - getText
+    async verifyExtractedTextPassword(expectedText:string) : Promise<void>{
+        await this.web.clickElement(loginPage.viewPasswordIcon);
+        const actualText = await this.web.getText(loginPage.passwordTextBox);
+        await this.web.compareText(actualText,expectedText);
+        await this.web.clickElement(loginPage.viewPasswordIcon);
     }
 
     //Method to click on the Forgot Password link
@@ -137,5 +175,29 @@ export class LoginPageSteps{
         await this.web.isElementVisible(loginPage.loginTitle);
     }
 
-    
+    //Method to check the title of a web page
+    async verifyNewPageTitle(title:string): Promise<void>{
+        await this.web.checkTitle(title);
+    }
+   
+    //Method to click on LinkedIn Icon
+    async verifyClickLinkedinIcon(): Promise<void>{
+        await this.web.clickElement(loginPage.linkedinIcon);
+    }
+
+    //Method to click on Google Icon
+    async verifyClickGoogleIcon(): Promise<void>{
+        await this.web.clickElement(loginPage.googleIcon);
+    }
+
+    //Method to click on Sign Up 
+    async verifyClickSignUp(): Promise<void>{
+        await this.web.clickElement(loginPage.singupButton);
+    }
+
+    //Method to verify additional security page header
+    async verifyAdditonalSecurityHeader(): Promise<void>{
+        await this.web.isElementVisible(loginPage.additionSecurityHeader);
+    }
+
 }

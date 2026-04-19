@@ -103,6 +103,27 @@ export class CookiesPageSteps{
         }
     } 
 
+    //Method to click on the specific Toggle button. 
+    async clickOnToggleButton(buttonName:string): Promise<void>{
+        switch(buttonName.toLowerCase()){
+            case 'necessary':
+                await this.web.clickElement(cookiesPage.necessaryToggle);
+                break;
+            case 'preferences':
+                await this.web.clickElement(cookiesPage.preferencesToggle);
+                break;
+            case 'statistics':
+                await this.web.clickElement(cookiesPage.statisticsToggle);
+                break;
+            case 'marketing':
+                await this.web.clickElement(cookiesPage.marketingToggle);
+                break;
+            default:
+                throw new Error(`Invalid button name: ${buttonName}`);
+        }
+    } 
+
+
     //Method to check whether the cookies pop up is closed
     async verifyCookiePopUpIsClosed(): Promise<void>{
         await this.web.isElementDisappeared(cookiesPage.cookieDialogCheck);
@@ -118,4 +139,5 @@ export class CookiesPageSteps{
     async verifyNewPageTitle(title:string): Promise<void>{
         await this.web.checkTitle(title);
     }
+
 }

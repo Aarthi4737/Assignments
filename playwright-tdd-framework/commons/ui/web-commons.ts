@@ -20,8 +20,7 @@ export class WebCommons {
             await expect(this.page).toHaveTitle(title);
         }
     }
-
-   
+  
     //Common method to scroll to an element
     async scrollToElement(locator: string): Promise<void> {
         const element = await this.element(locator);
@@ -54,6 +53,13 @@ export class WebCommons {
         const element = await this.element(locator);
         await this.scrollToElement(locator);
         await element.hover();
+    }
+
+    //Common method to validate the tool tip displayed on hover
+    async hoverToolTipText(locator: string): Promise<void> {
+        const element = await this.element(locator);
+        await this.scrollToElement(locator);
+        await expect(element).toBeVisible();
     }
 
     //Common method to perform force click on an element

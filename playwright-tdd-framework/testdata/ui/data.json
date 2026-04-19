@@ -6,11 +6,29 @@
         "username":"theeaarthi@gmail.com",
         "password":"Vinayak@123"
     },
+    "Verify forgot password confirmation message":{
+        "username":"theeaarthi@gmail.com",
+        "password":"Vinayak@123"
+    },
     "Verify Login with Invalid Credentials":{
         "username":"theeaarthi@gmail.com",
         "password":"vinayak@123"
     },
     "Verify new Page title":{
         "titleText":"What is behind “Powered by Cookiebot™” - Cookiebot"
+    },
+    "Verify Hover text with Invalid email":{
+        "username":"theee12_",
+        "password":"fejujeeec"
+    },
+    "Verify password extraction on click of Eye Icon":{
+        "username":"theeaarthi@gmail.com",
+        "password":"Vinayak@123"
+    },
+    "Verify whether LinkedIn page is opened when user clicks on LinkedIn icon":{
+        "linkedinTitle":"LinkedIn Login, Sign in | LinkedIn"
+    },
+    "Verify whether Google page is opened when user clicks on Google icon":{
+        "googleTitle":"Sign in - Google Accounts"
     }
 }
