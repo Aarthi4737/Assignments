@@ -1,0 +1,31 @@
+{
+    "duplicateRepo":{
+        "requestType":"POST",
+        "endpoint":"/user/repos",
+        "body":{
+            "name":"testRepo",
+            "description":"This is a test repository created using Playwright TDD Framework",
+            "private":true
+        },
+        "expectedStatusCode":422,
+        "expectedStatusMessage":"Unprocessable Entity",
+        "expErrorMessage":"Repository creation failed."
+    },
+    "validRepo":{
+        "requestType":"POST",
+        "endpoint":"/user/repos",
+        "body":{
+            "name":"testRepo2",
+            "description":"This is a test repository created using Playwright TDD Framework",
+            "private":true
+        },
+        "expectedStatusCode":201,
+        "expectedStatusMessage":"Created"
+    },
+    "deleteRepo":{
+        "requestType":"DELETE",
+        "endpoint":"/repos/Aarthi-0509/testRepo2",    
+        "expectedStatusCode":204,
+        "expectedStatusMessage":"No Content"
+    }
+}
