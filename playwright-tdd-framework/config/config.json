@@ -15,8 +15,7 @@
     },
     "api":{
         "base_url":"https://api.github.com",
-        "owner" : "Aarthi-0509",
-        "bearer_token":"Bearer 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" 
+        "owner" : "Aarthi-0509"
     },
     "ollama":{
         "model" : "ollama/model:latest",

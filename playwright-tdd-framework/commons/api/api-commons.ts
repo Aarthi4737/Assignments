@@ -11,7 +11,7 @@ export class APICommons{
         this.requestContext = await request.newContext({
             baseURL: config.api.base_url,
             extraHTTPHeaders:{
-                'Authorization' : config.api.bearer_token,
+               // 'Authorization' : config.api.bearer_token,
                 'Accept' : 'application/vnd.github+json',
                 'X-GitHub-Api-Version' : '2026-03-10'
             }

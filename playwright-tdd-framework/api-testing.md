@@ -200,7 +200,6 @@ Application : https://github.com/
 API Documentation : https://docs.github.com/en/rest/repos/repos
 
 GIT Account : Aarthi-0509
-GIT TOKEN: Bearer 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
 
 ## Scenarios: 
 
@@ -243,7 +242,7 @@ Default: false
 
 ### Authorization Mechanism : 
 
-"Authorization: Bearer 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"
+
 
 Generate Token : Profile -> Settings -> Developer Settings -> Personal access tokens -> Tokens (Classic) -> Generate new token -> Generate new token(classic)
 or 

@@ -1,0 +1,449 @@
+{
+  "info": {
+    "_postman_id": "f70faa65-d633-45bc-a37f-ba065c5fc5b1",
+    "name": "GitHub API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54136198",
+    "_collection_link": "https://go.postman.co/collection/54136198-f70faa65-d633-45bc-a37f-ba065c5fc5b1?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Creates a duplicate repository for the authenticated user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "//Set the repository name as a global variable \r",
+              "pm.globals.set(\"repoName\", \"TestRepo\");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//validate the response status code of the duplicate repository request",
+              "pm.test(\"validate the response status code of the duplicate repository request\", function () { ",
+              "    pm.expect(pm.response.code).to.eql(422); ",
+              "});",
+              "",
+              "//validate the status message of the duplicate repository request",
+              "pm.test(\"validate the response status message of the duplicate repository request\", function () { ",
+              "    pm.expect(pm.response.status).to.include(\"Unprocessable Entity\"); ",
+              "});",
+              "",
+              "//validate the response time of the duplicate repository request",
+              "pm.test(\"validate the response time of the duplicate repository request\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+              "});",
+              "",
+              "//validate the response body of the duplicate repository request",
+              "pm.test(\"validate the response body of the duplicate repository request\", function () {",
+              "    pm.expect(pm.response.json().message).to.eql(\"Repository creation failed.\");",
+              "    pm.expect(pm.response.json().errors[0].message).to.eql(\"name already exists on this account\");",
+              "    pm.expect(pm.response.json().status).to.eql(\"422\");",
+              "});",
+              "",
+              "//create a method to wait for 2 sec",
+              "setTimeout(()=>{",
+              "    console.log(\"Waiting for 2 seconds!\");",
+              "},2000);",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json",
+            "type": "text"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2026-03-10",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"{{repoName}}\",\r\n    \"private\": true,\r\n    \"description\": \"Sample duplicate repo from Postman\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/user/repos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Creates a valid repository for the authenticated user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "//Set the repository name as a global variable \r",
+              "pm.globals.set(\"repoName\", \"TestRepo2\");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//validate the response status code of the valid repository request\r",
+              "pm.test(\"validate the response status code of the valid repository request\", function () { \r",
+              "    pm.expect(pm.response.code).to.eql(201); \r",
+              "});\r",
+              "\r",
+              "//validate the status message of the valid repository request\r",
+              "pm.test(\"validate the response status message of the valid repository request\", function () { \r",
+              "    pm.expect(pm.response.status).to.include(\"Created\"); \r",
+              "});\r",
+              "\r",
+              "//validate the response time of the valid repository request\r",
+              "pm.test(\"validate the response time of the valid repository request\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//validate the response body of the valid repository request\r",
+              "pm.test(\"validate the response body of the valid repository request\", function () {\r",
+              "    pm.expect(pm.response.json().name).to.eql(pm.globals.get(\"repoName\"));\r",
+              "    pm.expect(pm.response.json().private).to.eql(true);\r",
+              "});\r",
+              "\r",
+              "//create a method to wait for 2 sec\r",
+              "setTimeout(()=>{\r",
+              "    console.log(\"Waiting for 2 seconds!\");\r",
+              "},2000);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json",
+            "type": "text"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2026-03-10",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"{{repoName}}\",\r\n    \"private\": true,\r\n    \"description\": \"Sample repo testing from Postman\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/user/repos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update the repository",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "//Set the repository name as a global variable \r",
+              "pm.globals.set(\"repoName\", \"TestRepo2\");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//updateate the response status code of the update repository request\r",
+              "pm.test(\"updateate the response status code of the update repository request\", function () { \r",
+              "    pm.expect(pm.response.code).to.eql(200); \r",
+              "});\r",
+              "\r",
+              "//updateate the status message of the update repository request\r",
+              "pm.test(\"updateate the response status message of the update repository request\", function () { \r",
+              "    pm.expect(pm.response.status).to.include(\"OK\"); \r",
+              "});\r",
+              "\r",
+              "//updateate the response time of the update repository request\r",
+              "pm.test(\"updateate the response time of the update repository request\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//updateate the response body of the update repository request\r",
+              "pm.test(\"updateate the response body of the update repository request\", function () {\r",
+              "    pm.expect(pm.response.json().name).to.eql(pm.globals.get(\"repoName\"));\r",
+              "    pm.expect(pm.response.json().private).to.eql(false);\r",
+              "});\r",
+              "\r",
+              "//create a method to wait for 2 sec\r",
+              "setTimeout(()=>{\r",
+              "    console.log(\"Waiting for 2 seconds!\");\r",
+              "},2000);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json",
+            "type": "text"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2026-03-10",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"private\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/repos/{{owner}}/{{repoName}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repoName}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search and Get the repository",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//getate the response status code of the get repository request\r",
+              "pm.test(\"getate the response status code of the get repository request\", function () { \r",
+              "    pm.expect(pm.response.code).to.eql(200); \r",
+              "});\r",
+              "\r",
+              "//getate the status message of the get repository request\r",
+              "pm.test(\"getate the response status message of the get repository request\", function () { \r",
+              "    pm.expect(pm.response.status).to.include(\"OK\"); \r",
+              "});\r",
+              "\r",
+              "//getate the response time of the get repository request\r",
+              "pm.test(\"getate the response time of the get repository request\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//create a method to wait for 2 sec\r",
+              "setTimeout(()=>{\r",
+              "    console.log(\"Waiting for 2 seconds!\");\r",
+              "},2000);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json",
+            "type": "text"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2026-03-10",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/repos/{{owner}}/{{repoName}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repoName}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a Repository",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//getate the response status code of the get repository request\r",
+              "pm.test(\"getate the response status code of the get repository request\", function () { \r",
+              "    pm.expect(pm.response.code).to.eql(204); \r",
+              "});\r",
+              "\r",
+              "//getate the status message of the get repository request\r",
+              "pm.test(\"getate the response status message of the get repository request\", function () { \r",
+              "    pm.expect(pm.response.status).to.include(\"No Content\"); \r",
+              "});\r",
+              "\r",
+              "//getate the response time of the get repository request\r",
+              "pm.test(\"getate the response time of the get repository request\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//create a method to wait for 2 sec\r",
+              "setTimeout(()=>{\r",
+              "    console.log(\"Waiting for 2 seconds!\");\r",
+              "},2000);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json",
+            "type": "text"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2026-03-10",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/repos/{{owner}}/{{repoName}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repoName}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
