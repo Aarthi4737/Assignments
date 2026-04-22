@@ -200,7 +200,6 @@ Application : https://github.com/
 API Documentation : https://docs.github.com/en/rest/repos/repos
 
 GIT Account : Aarthi-0509
-
 ## Scenarios: 
 
 1. Creating a duplicate repository with valid credentials. 
