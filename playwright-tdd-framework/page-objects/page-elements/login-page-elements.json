@@ -32,6 +32,6 @@
     "toolTipErrorMessage" : "span.tooltip-value",
     "viewPasswordIcon" : "mat-icon[class*='input-icon password-icon']",
     "forgotPasswordToolTip" : "span.tooltip-value",
-    "additionSecurityHeader" :"//div[contains(text(), 'security')]"
+    "additionSecurityHeader" :"div.header-title"
     
 }
