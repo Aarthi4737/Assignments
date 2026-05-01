@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test" : "playwright test",
-    "test:headed" : "playwright test --headed",
-    "test:report" : "playwright show-report",
-    "ui" : "playwright test tests/ui --headed",
-    "custom" : "playwright test tests/ui -g \"Verify whether new page displayed on click of Sign up button\" --headed",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "ui": "playwright test tests/ui --headed",
+    "custom": "playwright test tests/ui -g \"Verify whether new page displayed on click of Sign up button\" --headed",
     "api": "playwright test tests/api/api-tests.spec.ts"
   },
   "keywords": [],
@@ -17,7 +17,7 @@
   "type": "module",
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.5.2"
+    "@types/node": "^25.6.0"
   },
   "dependencies": {
     "@types/pg": "^8.20.0",
